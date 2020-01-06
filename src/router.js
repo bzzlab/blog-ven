@@ -1,11 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import BlogCreate from "./views/post/PostCreate.vue";
-import BlogList from "./views/post/PostList";
-import BlogEdit from "./views/post/PostEdit";
-import BlogDelete from "./views/post/PostDelete";
-
+import BlogCreate from "./views/post/BlogCreate.vue";
 Vue.use(Router);
 
 //assigned to a constant in post to access properties
@@ -18,28 +14,10 @@ const routes = new Router({
             name: "home",
             component: Home
         }, {
-            path: "/post/new",
-            name: "post-create",
+            path: "/blog/new",
+            name: "blog-create",
             component: BlogCreate
         }, {
-            path: "/post",
-            name: "post-list",
-            component: BlogList
-        }, {
-            path: "/post/:id",
-            name: "post-edit",
-            component: BlogEdit
-        }, {
-            path: "/post/del/:id",
-            name: "post-delete",
-            component: BlogDelete
-        },
-        /*
-        {
-            path: "/about",
-            name: "about",
-            component: About,
-        }, */{
             path: "*",
             redirect: "/"
         }

@@ -1,9 +1,9 @@
 import express from 'express';
 const router  = express.Router();
+import * as controller from './register-controller'
 
-//create new post
-router.post('/register', (req,res)=>{
-    res.send('post.register - register a user');
-});
+
+//create new register
+router.post('/register', controller.index);
 
 export default router;

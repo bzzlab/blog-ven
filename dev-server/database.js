@@ -7,8 +7,8 @@ const query = loadDatabase({
       password TEXT NOT NULL
     )
   `,
-  Posts: `
-    CREATE TABLE Posts (
+  Blogentries: `
+    CREATE TABLE BlogEntries (
       id BIGSERIAL NOT NULL PRIMARY KEY,
       authorUsername TEXT NOT NULL,
       body TEXT NOT NULL
@@ -33,15 +33,15 @@ export const users = {
   },
 };
 
-export const posts = {
+export const blogentries = {
   async list() {
-    const results = await query(`SELECT * FROM Posts`);
+    const results = await query(`SELECT * FROM Blogentries`);
     return results;
   },
   async create(authorUsername, body) {
     await query(
       `
-        INSERT INTO Posts (body, authorUsername)
+        INSERT INTO Blogentries (body, authorUsername)
           VALUES ("${body}", "${authorUsername}")
       `,
     );

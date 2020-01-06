@@ -2,10 +2,10 @@
     <div id="home">
         <JumbotronF
                 title="Concert"
-                abstract="Early bird ticket order for the Frauenfeld festival 2020!"
+                abstract="Early blog-site of the Frauenfeld festival 2020!"
         />
-        <router-link class="nav-link" to="/order/new">
-            <button type="button" class="btn btn-primary">{{title}}</button>
+        <router-link class="nav-link" to="/blog/new">
+            <button type="button" class="btn btn-primary">{{label1}}</button>
         </router-link>
     </div>
 </template>
@@ -17,11 +17,18 @@ export default {
     name: "home",
     data: function () {
         return {
-            title: "Proceed here for a new post!"
+            label1: "Create your first blog!"
         }
     },
     components: {
         JumbotronF
+    },
+    //Check response from the user
+    beforeCreate() {
+        fetch(this.$store.state.apiUrl + '/api/user', {
+            method: 'GET'
+        })
+        .then(res => console.log(res));
     }
 };
 </script>

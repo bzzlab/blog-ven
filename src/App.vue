@@ -18,6 +18,13 @@
     components: {
       Navbar,
       Footer
+    },
+    /*  important statement in order to keep and show the logged in user
+        even if the page is refreshed. Prerequisite is a stored token in
+        the local storage.
+    */
+    beforeCreate: function(){
+      this.$store.dispatch('authenticate');
     }
   }
 </script>
