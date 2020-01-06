@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "authorUsername": "dgar",
+    "body": "Dies ist ein Test."
+  },
+  {
+    "id": 2,
+    "authorUsername": "musterh",
+    "body": "Hallo zusammen."
+  },
+  {
+    "id": 3,
+    "authorUsername": "dgar",
+    "body": "Test eintrag"
+  },
+  {
+    "id": 4,
+    "authorUsername": "musterh",
+    "body": "Hallo liebe Katzenliebhaber."
+  },
+  {
+    "id": 5,
+    "authorUsername": "musterh",
+    "body": "Ein weiterer Test"
+  }
+]
