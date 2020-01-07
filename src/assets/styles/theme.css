@@ -2,6 +2,7 @@
 /* General */
 /* Navigation variables */
 /* Logo */
+/* Forms */
 .custom-bg-dark {
   /* add !important; in post to over right bootstrap */
   background-color: #373f46 !important; }
@@ -27,6 +28,7 @@ li.nav-item a {
 /* General */
 /* Navigation variables */
 /* Logo */
+/* Forms */
 .footer-primary {
   height: 4rem;
   font-size: 1rem;

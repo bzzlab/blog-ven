@@ -1,4 +1,5 @@
 import { Blog } from './blog.js';
+import { IdUtil } from "../../utilities/id-util";
 
 export function index(req,res) {
     return res.json();
@@ -23,7 +24,7 @@ export function remove(req,res) {
 export function create(req,res) {
     //init address
     let new_blogEntry = new Blog(
-        generateId(),
+        IdUtil.generateBlogId(),
         "test-nickname",
         req.body.title.toLowerCase(),
         req.body.content.toLowerCase()
@@ -37,9 +38,4 @@ export function create(req,res) {
         title: new_blogEntry.title,
         nickname: new_blogEntry.nickname,
     });
-}
-
-function generateId() {
-    return Math.floor(Math.random()*100).toString()+'-'
-        +Math.floor(Math.random()*100).toString();
 }

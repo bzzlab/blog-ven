@@ -1,4 +1,20 @@
 class Account {
+    get firstname() {
+        return this._firstname;
+    }
+
+    set firstname(value) {
+        this._firstname = value;
+    }
+
+    get lastname() {
+        return this._lastname;
+    }
+
+    set lastname(value) {
+        this._lastname = value;
+    }
+
     get id() {
         return this._id;
     }
@@ -21,10 +37,12 @@ class Account {
     set password(value) {
         this._password = value;
     }
-    constructor(id, email, password){
+    constructor(id, email, password, firstname, lastname){
         this._email = email;
         this._password = password;
         this._id = id;
+        this._firstname = firstname;
+        this._lastname = lastname;
     }
 }
 

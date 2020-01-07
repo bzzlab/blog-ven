@@ -10,7 +10,7 @@
     "sass": "node-sass src/assets/scss -o src/assets/styles --recursive",
     "build-all": "set NODE_ENV=development && npm run sass && babel dev-server --out-dir prod-server && webpack --mode=development --config webpack.config.js",
     "build-server": "babel dev-server --out-dir prod-server --watch",
-    "all": "concurrently \"set NODE_ENV=development\" \"babel dev-server --out-dir prod-server --watch\" \"nodemon prod-server/index.js\" \"npm run client\" ",
+    "dev-all": "concurrently \"set NODE_ENV=development\" \"babel dev-server --out-dir prod-server --watch\" \"nodemon prod-server/index.js\" \"npm run client\" ",
     "temp": "set NODE_ENV=development && nodemon prod-server/index.js"
   },
   "keywords": [
