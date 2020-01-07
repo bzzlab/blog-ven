@@ -5,7 +5,8 @@ import Account from './account';
 export function create(req, res) {
     const validation = validateIndex(req.body);
     if (!validation.isValid){
-        return res.json({message: validation.message});
+        //400: for validation failure where username or password is missing
+        return res.status(400).json({message: validation.message});
     }
 
     //init account
@@ -18,7 +19,8 @@ export function create(req, res) {
     );
 
     console.log(new_account);
-    return res.json({message: "User"+new_account.email+"registred!", id: new_account.id});
+    //201: success when creating new data
+    return res.status(201).json({message: "User"+new_account.email+"registred!", id: new_account.id});
 }
 
 

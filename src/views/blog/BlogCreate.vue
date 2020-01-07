@@ -24,6 +24,7 @@
 </template>
 
 <script>
+    import store from '../../store';
     const API_URL = store.state.apiUrl;
     export default {
         name: "BlogCreate",
@@ -33,7 +34,7 @@
             blog: {
                 nickname: "",
                 title: "",
-                entry: ""
+                content: ""
             }
         }),
         mounted() {
@@ -51,11 +52,11 @@
                     })
                     .then(res => res.json())
                     .then(res => this.id=res.id);
-            },
+            }/*,
             proceed(){
                 //redirect to oder list
                 this.$router.push("/blog");
-            }
+            }*/
         }
     }
 </script>

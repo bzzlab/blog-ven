@@ -1,9 +1,12 @@
 import { Blog } from './blog.js';
 import { IdUtil } from "../../utilities/id-util";
 
+//list all blogs
 export function index(req,res) {
-    return res.json();
+    return res.status(200).json();
 }
+
+//not used at the moment
 export function show(req,res) {
     return res.json();
 }
@@ -32,7 +35,7 @@ export function create(req,res) {
 
     console.log("log post on the server (see below):");
     console.log(new_blogEntry);
-    return res.json({
+    return res.status(201).json({
         message: "We received your post (Order-ID, First/Lastname)",
         id: new_blogEntry.id,
         title: new_blogEntry.title,

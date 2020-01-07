@@ -46,10 +46,12 @@
                     first: this.first,
                     last: this.last
                 };
-                const registerPromise = auth.registerUser(user);
+                //TODO: registerUser(user) is nyi!!
+                //const registerPromise = auth.registerUser(user);
                 const loginPromise = auth.login(user);
-                await Promise.all([registerPromise, loginPromise]);
-                this.$router.push({ name: 'home' });
+                //await Promise.all([registerPromise, loginPromise]);
+                await Promise.all([loginPromise]);
+                this.$router.push({name: 'home'});
             }
         }
     }
