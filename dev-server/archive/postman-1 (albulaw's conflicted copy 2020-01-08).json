@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "95efa87a-f4c3-48a0-9ddd-b0dc26ca3b22",
+		"name": "form-client_and_server-v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/api/order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Hans\",\n    \"lastname\": \"Muster\",\n    \"street\": \"seestrasse 955\",\n    \"city\": \"horgen\",\n    \"zip\": \"8600\",\n    \"numOfTickets\": \"3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/order",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"order"
+					]
+				},
+				"description": "Order-2"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"anna.muster@beispiel.ch\",\n    \"password\": \"test\",\n    \"address\": \"seestrasse 955\",\n    \"city\": \"horgen\",\n    \"zip\": \"8600\",\n    \"numOfTickets\": \"2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/order",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"order"
+					]
+				},
+				"description": "Post request"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
