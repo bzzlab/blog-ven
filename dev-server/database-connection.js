@@ -24,6 +24,7 @@ export default function load(tables) {
 
   //const dataDirectory = __dirname + '/../data';
   const dataDirectory = __dirname + '/data';
+  console.log(`data-directory: ${dataDirectory}`);
   const file = tableName => `${dataDirectory}/${tableName}.json`;
   try {
     mkdirSync(dataDirectory);
@@ -50,9 +51,9 @@ export default function load(tables) {
   }
 
   return async function runQuery(query, params) {
-    //console.log('exec: ' + (typeof query === 'string' ? query : query.text));
+    console.log('exec: ' + (typeof query === 'string' ? query : query.text));
     if (typeof query !== 'string') {
-      //console.log(query.values);
+      console.log(query.values);
     }
     const result = exec(query, params);
     tableNames.forEach(tableName => {

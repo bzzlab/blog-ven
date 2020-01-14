@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
     <Navbar />
     <main role="main" class="container">
       <div class="starter-template">

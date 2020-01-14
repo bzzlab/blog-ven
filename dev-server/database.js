@@ -8,10 +8,11 @@ const query = loadDatabase({
     )
   `,
   Blogentries: `
-    CREATE TABLE BlogEntries (
+    CREATE TABLE Blogentries (
       id BIGSERIAL NOT NULL PRIMARY KEY,
-      authorUsername TEXT NOT NULL,
-      body TEXT NOT NULL
+      nickname TEXT NOT NULL,
+      title TEXT NOT NULL,
+      content TEXT NOT NULL
     )
   `,
 });
@@ -38,11 +39,11 @@ export const blogentries = {
     const results = await query(`SELECT * FROM Blogentries`);
     return results;
   },
-  async create(authorUsername, body) {
+  async create(blogId, nickname, title, content) {
     await query(
       `
-        INSERT INTO Blogentries (body, authorUsername)
-          VALUES ("${body}", "${authorUsername}")
+        INSERT INTO Blogentries (blogId, nickname, title, content)
+          VALUES ("${blogId}", "${nickname}", "${title}", "${content}")
       `,
     );
   },

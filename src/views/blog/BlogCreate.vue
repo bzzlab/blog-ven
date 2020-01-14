@@ -3,6 +3,9 @@
     <h1>Create Blog</h1>
         <p>Fill out the form below to create your blog-entry.</p>
         <h4>Recent entries</h4>
+        <div>
+            {{ blogs }}
+        </div>
         <form @submit.prevent="addPost">
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -18,8 +21,7 @@
                 <button type="submit" class="btn btn-primary" data-toggle="modal"
                         data-target="#confirmBlogEntry">Blog now</button>
             </div>
-    </form>
-
+        </form>
     </div>
 </template>
 
@@ -39,8 +41,11 @@
         }),
         mounted() {
             //later replace by fetch(this.$store.state.apiUrl);
-            fetch(API_URL +'/api/blog', {method: 'GET'})
-                .then(res => console.log(res.json()));
+            fetch(API_URL +'/api/blog',
+                {method: 'GET'})
+                //pay attention .then(res => console.log(res.json())) won't work
+                //.then(res => console.log(res))
+                .then(res => this.blogs = res.data.result)
         },
         methods:{
             addPost(){
@@ -52,11 +57,12 @@
                     })
                     .then(res => res.json())
                     .then(res => this.id=res.id);
-            }/*,
+                this.proceed();
+            },
             proceed(){
                 //redirect to oder list
                 this.$router.push("/blog");
-            }*/
+            }
         }
     }
 </script>

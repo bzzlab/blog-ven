@@ -9,5 +9,7 @@ const presets = [["@babel/env", {
   useBuiltIns: "usage",*/
 }]];
 module.exports = {
-  presets
+  presets,
+  "sourceMaps": "inline",
+  "retainLines": true
 };

@@ -1,9 +1,9 @@
 <template>
     <header>
-        <!--<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-light custom-bg-dark">
+<!--            <img :src="`${publicPath}blog.png`" alt="test image"/> -->
             <router-link to="/" class="navbar-brand">
-                <img alt="Vue logo" class="logo" src="../assets/logo.png"/>Ticket-Bazaar
+                <img alt="Blog logo" class="logo" src="../assets/blog.png"/>Concert-Blog
             </router-link>
             <button aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation"
@@ -19,18 +19,36 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/" exact>Home</router-link>
                     </li>
-                    <!-- Order menu -->
+                    <!-- Blog -->
                     <li class="nav-item">
-<!--                        <router-link class="nav-link" to="/post/new" exact>Order</router-link>-->
-                        <router-link class="nav-link dropdown-toggle" to="/order" role="button"
-                                     data-toggle="dropdown" aria-haspopup="true"
-                                     aria-expanded="false" exact>Order</router-link>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <router-link class="dropdown-item" to="/order/new" exact>Create</router-link>
-                            <!--<router-link class="dropdown-item" to="/post/:id">Edit</router-link>
-                            <div class="dropdown-divider"></div>
-                            <router-link class="dropdown-item" to="/post/del/:id">Delete</router-link>-->
-                        </div>
+                        <router-link class="nav-link" to="/blog/new" exact>Blog</router-link>
+                    </li>
+                    <!-- registration menu -->
+                    <!--<li v-if="!$store.state.isLoggedIn" class="nav-item">-->
+                    <li class="nav-item">
+                        <router-link to="/register" class="nav-link" exact>
+                            Register
+                        </router-link>
+                    </li>
+                    <!-- Authentication menu -->
+                    <li class="nav-item">
+                        <router-link to="/login" class="nav-link" exact>
+                            Login
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <!--<a v-on:click.prevent="logout()" class="nav-link" href="#">Logout</a>-->
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Display the current user's username in the navbar -->
+                        <!-- TODO: Instead of 'User' is it possible to add navigation item
+                                in order to select the login button and when logged in then
+                                the logged-in-user is shown.
+                        -->
+                        <a class="nav-link" href="#">
+                            {{ this.$store.state.username ? this.$store.state.username : 'User' }}
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -40,6 +58,16 @@
 
 <script>
     export default {
-        name: "navbar"
+        name: "navbar",
+        beforeEnter: (toolbar,from,next) => {
+            console.log("Path" + process.env.BASE_URL);
+            next();
+        },
+        data () {
+            return {
+                publicPath: "../"
+            }
+        },
+
     }
 </script>

@@ -17,7 +17,7 @@ const routes = new Router({
             name: "home",
             component: Home
         }, {
-            path: "/blog/new",
+            path: "/blog",
             name: "blog-create",
             component: BlogCreate,
             beforeEnter: (toolbar,from,next) => {

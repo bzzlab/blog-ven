@@ -86,6 +86,12 @@ npm install cors morgan --save-dev
 $ npm install body-parser --save
 ```
 
+
+
+### How to debug a node app
+See for details
+https://nodejs.org/en/docs/guides/debugging-getting-started/
+
 ### How to test the REST-API
 #### Postman
 Postman is a tool for testing the backend API. The following show different requests
