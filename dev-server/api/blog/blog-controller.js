@@ -10,27 +10,26 @@ export function index(req,res) {
     });
 }
 
-export function indexDb2(req,res,next) {
-    try {
-        let blogEntries = null;
-        database.blogentries.list()
-            .then(res => console.log(res))
-            .then(res => blogEntries=JSON.stringify(res, null, 2));
-        res.send(blogEntries);
-    } catch (ex) {
-        next(ex);
-    }
-}
-
 export function indexDb(req,res,next) {
     try {
-        let blogEntries = database.blogentries.list();
-        console.log(blogEntries);
-        res.send(JSON.stringify(blogEntries, null, 2));
+        let blog;
+        database.blogentries.list()
+            //TODO: read array and create json data
+            .then(function (res) {
+                blog= JSON.stringify(res[0], null, 3);
+            });
+        //TODO: return JSON data - list of blog-entries.
+        return res.status(200).json({
+            message: "hello"
+        })
     } catch (ex) {
+        console.log(ex);
         next(ex);
     }
+
 }
+
+
 
 //not used at the moment
 export function show(req,res) {
@@ -72,7 +71,6 @@ export function create(req,res) {
 export async function createDb(req,res, next) {
     try {
         let new_blogEntry = new Blog(
-            IdUtil.generateBlogId(),
             "test-nickname",
             req.body.title.toLowerCase(),
             req.body.content.toLowerCase()
@@ -80,12 +78,14 @@ export async function createDb(req,res, next) {
 
         if (new_blogEntry.nickname) {
             await database.blogentries.create(
-                new_blogEntry.id,
                 new_blogEntry.nickname,
                 new_blogEntry.title,
                 new_blogEntry.content
             );
         }
+        return res.status(201).json({
+            message: `blog inserted with ${new_blogEntry.title}!`
+        });
         //res.redirect('/');
     } catch (ex) {
         next(ex);

@@ -39,11 +39,11 @@ export const blogentries = {
     const results = await query(`SELECT * FROM Blogentries`);
     return results;
   },
-  async create(blogId, nickname, title, content) {
+  async create(nickname, title, content) {
     await query(
       `
-        INSERT INTO Blogentries (blogId, nickname, title, content)
-          VALUES ("${blogId}", "${nickname}", "${title}", "${content}")
+        INSERT INTO Blogentries (nickname, title, content)
+          VALUES ("${nickname}", "${title}", "${content}")
       `,
     );
   },

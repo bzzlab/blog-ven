@@ -9,12 +9,7 @@ class Blog {
         return this._nickname;
     }
 
-    get id() {
-        return this._id;
-    }
-
-    constructor(id, nickname, title, content){
-        this._id = id;
+    constructor(nickname, title, content){
         this._nickname = nickname;
         this._title = title;
         this._content = content;
