@@ -10,34 +10,38 @@ export function index(req,res) {
     });
 }
 
-export function indexDb(req,res,next) {
-    let blogList = new Array();
+export async function indexDb(req,res,next) {
+    var blogList = [];
+    const init = {
+        'status': 200,
+        'statusText': 'SuperSmashingGreat!'
+    };
     try {
-        database.blogentries.list()
+        await database.blogentries.list()
             //TODO: read array and create json data
             .then(function (res) {
                 //let blog= JSON.stringify(res[0], null, 3);
                 for (let index in res){
                     let blog = res[index];
                     blogList.push({
-                        "title" : blog.title
+                        "nickname": blog.nickname,
+                        "title" : blog.title,
+                        "content": blog.content
                     })
                 }
-
-                //TODO: return JSON data - list of blog-entries.
-                res.writeHead(200, {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin" : "*"
-                });
-                res.send(JSON.stringify(blogList));
-                res.end();
             });
+        //it works:
+        //return res.send(JSON.stringify({ x: 5, y: 6 }));
+        return res.status(200).send(JSON.stringify(blogList));
+        // return res.status(200).json({
+        //     message: "get blog-entry",
+        //     title: blogList[0].title
+        // });
 
     } catch (ex) {
         console.log(ex);
         next(ex);
     }
-
 }
 
 

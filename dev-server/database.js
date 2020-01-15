@@ -36,8 +36,13 @@ export const users = {
 
 export const blogentries = {
   async list() {
-    const results = await query(`SELECT * FROM Blogentries`);
-    return results;
+    try{
+      const results = await query(`SELECT * FROM Blogentries`);
+      return results;
+    } catch (e) {
+      console.log(e);
+    }
+
   },
   async create(nickname, title, content) {
     await query(

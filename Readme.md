@@ -151,5 +151,32 @@ Setting the running mode differs between MacOS and Windows.
 ...
 ```
 
+#### Testing with curl
 
+GET-Requests
+```
+curl -i -X GET http://localhost:3000/api/blog
+```
 
+POST-Requests
+```
+curl -i -d "@data.json" -X POST http://localhost:3000/api/blog
+```
+
+where data.json is:
+```
+{
+  "key1":"value1",
+  "key2":"value2"
+}
+```
+
+For example:
+```
+{
+"id": 1,
+"nickname": "hans",
+"title": "Dies ist ein Test.",
+"content": "Dies ist ein Test."
+}
+```
