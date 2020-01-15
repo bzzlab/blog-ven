@@ -11,17 +11,28 @@ export function index(req,res) {
 }
 
 export function indexDb(req,res,next) {
+    let blogList = new Array();
     try {
-        let blog;
         database.blogentries.list()
             //TODO: read array and create json data
             .then(function (res) {
-                blog= JSON.stringify(res[0], null, 3);
+                //let blog= JSON.stringify(res[0], null, 3);
+                for (let index in res){
+                    let blog = res[index];
+                    blogList.push({
+                        "title" : blog.title
+                    })
+                }
+
+                //TODO: return JSON data - list of blog-entries.
+                res.writeHead(200, {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin" : "*"
+                });
+                res.send(JSON.stringify(blogList));
+                res.end();
             });
-        //TODO: return JSON data - list of blog-entries.
-        return res.status(200).json({
-            message: "hello"
-        })
+
     } catch (ex) {
         console.log(ex);
         next(ex);
