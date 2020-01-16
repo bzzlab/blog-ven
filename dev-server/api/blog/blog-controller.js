@@ -1,15 +1,7 @@
 import { Blog } from './blog.js';
-import { IdUtil } from "../../utilities/id-util";
 import * as database from '../../database';
 
 //list all blogs
-export function index(req,res) {
-    //return res.status(200).json();
-    return res.status(201).json({
-        message: "All blogs are going to be listed!"
-    });
-}
-
 export async function indexDb(req,res,next) {
     var blogList = [];
     const init = {
@@ -30,14 +22,7 @@ export async function indexDb(req,res,next) {
                     })
                 }
             });
-        //it works:
-        //return res.send(JSON.stringify({ x: 5, y: 6 }));
         return res.status(200).send(JSON.stringify(blogList));
-        // return res.status(200).json({
-        //     message: "get blog-entry",
-        //     title: blogList[0].title
-        // });
-
     } catch (ex) {
         console.log(ex);
         next(ex);
@@ -64,25 +49,6 @@ export function remove(req,res) {
  * @param res
  * @returns {*}
  */
-export function create(req,res) {
-    //init address
-    let new_blogEntry = new Blog(
-        IdUtil.generateBlogId(),
-        "test-nickname",
-        req.body.title.toLowerCase(),
-        req.body.content.toLowerCase()
-    );
-
-    console.log("log post on the server (see below):");
-    console.log(new_blogEntry);
-    return res.status(201).json({
-        message: "We received your blog-entry (Blog-ID, First/Lastname)",
-        id: new_blogEntry.id,
-        title: new_blogEntry.title,
-        nickname: new_blogEntry.nickname
-    });
-}
-
 export async function createDb(req,res, next) {
     try {
         let new_blogEntry = new Blog(
@@ -101,7 +67,6 @@ export async function createDb(req,res, next) {
         return res.status(201).json({
             message: `blog inserted with ${new_blogEntry.title}!`
         });
-        //res.redirect('/');
     } catch (ex) {
         next(ex);
     }

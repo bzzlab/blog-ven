@@ -4,9 +4,8 @@ import * as controller from './blog-controller';
 
 //create a blog entry
 router.post('/blog', controller.createDb);
-//router.post('/blog/test', controller.createTestDataDb);
 
-//get orders
+//get all blog entries
 router.get('/blog', controller.indexDb);
 
 /* For implementation in future
